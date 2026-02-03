@@ -30,7 +30,7 @@ Drop in your photos, run the script, upload the collages to your print service. 
 - Creates **4×6 inch collages** (landscape orientation)
 - Places **4 photos per collage** in a 2×2 grid
 - Preserves original aspect ratio (no cropping or stretching)
-- Automatically rotates photos to better match the grid orientation
+- Auto rotates photos to match grid orientation
 - Supports:
   - `.jpg`
   - `.jpeg`
@@ -39,7 +39,11 @@ Drop in your photos, run the script, upload the collages to your print service. 
   - `.heif`
 - Outputs one collage per 4 photos
 
-If you have 300 photos, you’ll get ~75 collages.
+<img width="1927" height="922" alt="Group 37" src="https://github.com/user-attachments/assets/6c8ec218-e062-4eea-a2a7-c06ba7f36459" />
+
+<img width="1927" height="922" alt="example-collage" src="https://github.com/user-attachments/assets/9c6c89e2-c48d-4785-892e-8330d59c387e" />
+
+
 
 ---
 
@@ -53,4 +57,5 @@ Install dependencies:
 
 ```bash
 pip install pillow pillow-heif
+
 
