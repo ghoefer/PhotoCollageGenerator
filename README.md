@@ -1,61 +1,75 @@
 # Photo Collage Generator
 
-A simple Python tool that turns a large folder of photos into print-ready 4×6 collages with 4 photos per print. Zero cropping, zero distortion, and full support for iPhone HEIC images. This vibe-coded project exists to make printing large photo collections easy, predictable, and high-quality, without needing Photoshop or manual layout work.
+A simple Python tool that turns a folder of photos into print-ready 4x6 collages with 4 photos per print.
 
----
+Each finished collage is:
 
-## ✨ Why this exists
+- 4x6 inches, landscape
+- 300 DPI
+- 1800 x 1200 pixels
+- A 2x2 grid with 4 equal photo slots
+- Fills every slot with no white space
+- Rotates portrait photos sideways when that fills the slot better
+- Crops from the center when needed
+- Saved as a high-quality JPEG
 
-If you’ve ever tried to print hundreds of photos, you’ve probably run into at least one of these problems:
+## How to use it with Codex
 
-- Photos get **cropped unexpectedly**
-- Portrait photos waste space on landscape prints (or vice versa)
-- HEIC photos from phones don’t open correctly
-- Printing services want **4×6 @ 300 DPI**, but your files aren’t set up that way
-- You don’t want to manually build collages one by one
+1. Add or upload the photos you want to use.
+2. Tell Codex: "make the collages."
+3. Codex will run the generator and show you where the finished collage files are.
 
-This script solves all of that by:
-- Automatically grouping photos into sets of 4
-- Laying them out in a clean 2×2 grid
-- Preserving each photo’s **original aspect ratio**
-- Rotating photos only when it helps them fit better
-- Outputting **print-ready 4×6 images at 300 DPI**
+The project folders are:
 
-Drop in your photos, run the script, upload the collages to your print service. Done.
+- `input_images` - put your original photos here
+- `collages` - finished 4x6 collage images appear here
 
----
+Supported photo formats:
 
-## 🖼 What it does
+- `.jpg`
+- `.jpeg`
+- `.png`
+- `.heic`
+- `.heif`
 
-- Creates **4×6 inch collages** (landscape orientation)
-- Places **4 photos per collage** in a 2×2 grid
-- Preserves original aspect ratio (no cropping or stretching)
-- Auto rotates photos to match grid orientation
-- Supports:
-  - `.jpg`
-  - `.jpeg`
-  - `.png`
-  - `.heic`
-  - `.heif`
-- Outputs one collage per 4 photos
+On a Mac, HEIC/HEIF files can be converted with the built-in image tools. Installing `pillow-heif` is still recommended for the most direct HEIC support.
 
-<img width="1927" height="922" alt="Group 37" src="https://github.com/user-attachments/assets/6c8ec218-e062-4eea-a2a7-c06ba7f36459" />
+If a Live Photo downloads as an MP4/MOV video, ask Codex to extract a still frame first. The generator uses that extracted still image in the collage.
 
-<img width="1927" height="922" alt="example-collage" src="https://github.com/user-attachments/assets/9c6c89e2-c48d-4785-892e-8330d59c387e" />
+## How it works
 
+The script takes your photos in filename order and groups them in sets of 4. Each group becomes one printable 4x6 image.
 
+For example:
 
----
+- 4 photos makes 1 collage
+- 8 photos makes 2 collages
+- 10 photos makes 3 collages, with blank space in the last one
 
-## 🧰 Requirements
+## Setup
 
-- Python 3.8+
-- Pillow
-- pillow-heif (for HEIC support)
-
-Install dependencies:
+Install the image libraries:
 
 ```bash
-pip install pillow pillow-heif
+pip install -r requirements.txt
+```
 
+## Run it yourself
 
+```bash
+python collage-generator.py
+```
+
+By default, it reads photos from `input_images` and saves collages to `collages`.
+
+You can also choose different folders:
+
+```bash
+python collage-generator.py --input /path/to/photos --output /path/to/collages
+```
+
+If you do not want portrait photos rotated sideways, add:
+
+```bash
+python collage-generator.py --keep-orientation
+```

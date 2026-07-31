@@ -1,0 +1,3 @@
+Put the photos you want to collage in this folder.
+
+Supported formats: JPG, JPEG, PNG, HEIC, HEIF.

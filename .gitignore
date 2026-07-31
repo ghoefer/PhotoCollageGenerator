@@ -1,0 +1,17 @@
+.DS_Store
+__pycache__/
+.venv/
+
+*.jpg
+*.jpeg
+*.png
+*.heic
+*.heif
+*.mp4
+*.mov
+
+input_images/*
+!input_images/PUT_PHOTOS_HERE.txt
+
+collages/*
+!collages/OUTPUTS_APPEAR_HERE.txt
